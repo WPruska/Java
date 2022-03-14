@@ -13,27 +13,61 @@ amaran
 Uwzględnij w programie wszelkie możliwe pomyłki użytkownika w przekazaniu parametrów do programu.
  */
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args)
     {
-        int start,end;
-        String text;
-
+        int start = 0,end = 0;
+        boolean isCorrect = false;
+        String text = "";
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Give text: ");
-        text =  scan.nextLine();
-        System.out.println("Give first number of string: ");
-        start = scan.nextInt();
-        System.out.println("Give end number of string: ");
-        end = scan.nextInt();
-
-        if(start < 0 || end > text.length())
+        while(!isCorrect)
         {
-            System.out.printf("Bad given index");
-            return;
+            System.out.println("Podaj tekst: ");
+            text =  scan.nextLine();
+            if(text.length() > 0) isCorrect = true;
+            else System.out.println("Podano za krotki tekst");
+        }
+
+        isCorrect = false;
+        while(!isCorrect)
+        {
+            try {
+                System.out.println("Podaj index poczatku: ");
+                start = scan.nextInt();
+                isCorrect = true;
+                if(start < 0 || start > text.length())
+                {
+                    System.out.println("Podano zla wartosc! Podaj jeszcze raz!");
+                    isCorrect = false;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Podano zla wartosc! Podaj jeszcze raz!");
+                scan.next();
+            }
+        }
+
+        isCorrect = false;
+        while(!isCorrect)
+        {
+            try {
+                System.out.println("Podaj index konca: ");
+                end = scan.nextInt();
+                isCorrect = true;
+                if(end < 0 || end > text.length() || end < start)
+                {
+                    System.out.println("Podano zla wartosc! Podaj jeszcze raz!");
+                    isCorrect = false;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Podano zla wartosc! Podaj jeszcze raz!");
+                scan.next();
+            }
         }
 
         String stringToDisplay = text.substring(start,end);
