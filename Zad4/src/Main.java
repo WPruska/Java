@@ -30,11 +30,16 @@ Przy kolejnym uruchomieniu programu użytkownik może:
 
 import Entity.Category;
 import Entity.Product;
+import Helpers.ReadFromFile;
+import Helpers.Menu;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args)
     {
-        Product chleb = new Product("Chleb");
-
+        ArrayList<Product> shoppingList = new ArrayList<>();
+        Menu menu = new Menu(shoppingList);
+        menu.ShowMenu();
     }
 }

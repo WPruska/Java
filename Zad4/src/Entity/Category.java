@@ -3,8 +3,8 @@ package Entity;
 import java.util.ArrayList;
 
 public class Category {
-    String CategoryName;
-    ArrayList<Product> products = new ArrayList<>();
+    public String CategoryName;
+    public ArrayList<Product> products = new ArrayList<>();
 
     public Category(String categoryName)
     {
