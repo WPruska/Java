@@ -9,7 +9,7 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Menu {
-    private String path = "C:\\Users\\adaml\\Documents\\Java\\Zad4\\ListOfProducts.txt";
+    private String path = "/Users/adamludwiczak/Projects/JavaPL/Zad4/ListOfProducts.txt";
     private final ArrayList<Category> _listOfItems;
     private final ArrayList<Product> _shoppingList;
     private final Scanner _scan;
@@ -170,7 +170,7 @@ public class Menu {
                 System.out.println("Choice what you want to do: ");
                 choice = _scan.nextInt();
                 isCorrect = true;
-                if(choice < 1 || choice > 4)
+                if(choice < 1 || choice > 6)
                 {
                     System.out.println("Bad choice! Take another one!");
                     isCorrect = false;
@@ -194,6 +194,7 @@ public class Menu {
                 _shoppingList.clear();
                 break;
             case 4:
+                SaveDataToFile.SaveData(_shoppingList);
                 break;
             case 5:
                 exit(1);
