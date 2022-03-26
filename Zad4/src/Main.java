@@ -38,8 +38,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args)
     {
-        ArrayList<Product> shoppingList = new ArrayList<>();
-        Menu menu = new Menu(shoppingList);
-        menu.ShowMenu();
+        Program program = new Program();
+        program.StartProgram();
     }
 }

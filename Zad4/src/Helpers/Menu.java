@@ -9,18 +9,15 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Menu {
-    private String path = "/Users/adamludwiczak/Projects/JavaPL/Zad4/ListOfProducts.txt";
     private final ArrayList<Category> _listOfItems;
     private final ArrayList<Product> _shoppingList;
     private final Scanner _scan;
-    ReadFromFile _rff;
 
-    public Menu(ArrayList<Product> shoppingList)
+    public Menu(ArrayList<Product> shoppingList, ArrayList<Category> listOfItems)
     {
-        _rff = new ReadFromFile(path);
-        _listOfItems =  _rff.LoadDataFormFile();
-        _shoppingList = shoppingList;
         _scan = new Scanner(System.in);
+        _shoppingList = shoppingList;
+        _listOfItems = listOfItems;
     }
 
     private void clearConsole()

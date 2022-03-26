@@ -17,9 +17,17 @@ public class ReadFromFile
 
     public ArrayList<Category> LoadDataFormFile()
     {
-        File fileToLoadData = OpenFile(_data);
+        File fileToLoadData = OpenFile(_data + "/ListOfProducts.txt");
 
-        return LoadData(fileToLoadData);
+        return LoadDataItems(fileToLoadData);
+    }
+
+    public ArrayList<Product> LoadShoppingList()
+    {
+        File file = OpenFile(_data + "/shoppingList.txt");
+        ArrayList<Product> shoppingList = LoadShoppingList(file);
+
+        return shoppingList;
     }
 
     private File OpenFile(String data)
@@ -41,7 +49,7 @@ public class ReadFromFile
         return file;
     }
 
-    private ArrayList<Category> LoadData(File file)
+    private ArrayList<Category> LoadDataItems(File file)
     {
         ArrayList<Category> listToReturn = new ArrayList<>();
 
@@ -73,6 +81,33 @@ public class ReadFromFile
             }
 
             listToReturn.add(categoryToAdd);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return listToReturn;
+    }
+
+    private ArrayList<Product> LoadShoppingList(File file)
+    {
+        ArrayList<Product> listToReturn = new ArrayList<>();
+
+        try
+        {
+            Scanner scan = new Scanner(file);
+            int Id = 0;
+            String Name = null;
+            String Category = null;
+
+            while(scan.hasNextLine())
+            {
+                Id = Integer.parseInt(scan.nextLine());
+                Name = scan.nextLine();
+                Category = scan.nextLine();
+                listToReturn.add(new Product(Id, Name, Category));
+            }
         }
         catch (Exception e)
         {
