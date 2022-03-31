@@ -13,7 +13,6 @@ amaran
 Uwzględnij w programie wszelkie możliwe pomyłki użytkownika w przekazaniu parametrów do programu.
  */
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
