@@ -9,9 +9,43 @@ np. określającego różnicę w długościach). Jeżeli są równej długości,
 Jeżeli nie są równej długości, użytkownik jest proszony o ponowne wprowadzenie tych wektorów.
  */
 
+import Entities.Vector;
+import Helpers.LoadDataFromUser;
+import Helpers.SaveToFile;
+
 public class Main {
     public static void main(String[] args)
     {
+        boolean isCorrect = false;
+        while(!isCorrect)
+        {
+            LoadDataFromUser ldf = new LoadDataFromUser();
+            Vector vector1 = ldf.LoadVector();
+            Vector vector2 = ldf.LoadVector();
+            if(vector1 == null || vector2 == null)
+            {
+                System.out.println("Podano zle dane! Prosze podac jeszcze raz!");
+                continue;
+            }
 
+            Vector vector3 = Vector.AddVectors(vector1, vector2);
+            if(vector3 == null)
+            {
+                System.out.println("Podano zle dane! Prosze podac jeszcze raz!");
+                continue;
+            }else
+            {
+                isCorrect = true;
+            }
+
+            System.out.println("Wektor 1:");
+            System.out.println(vector1.toString());
+            System.out.println("Wektor 2:");
+            System.out.println(vector2.toString());
+            System.out.println("Wektor 3:");
+            System.out.println(vector3.toString());
+
+            SaveToFile.SaveData(vector3);
+        }
     }
 }
