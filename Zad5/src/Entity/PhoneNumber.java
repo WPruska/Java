@@ -20,6 +20,6 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
     @Override
     public String toString()
     {
-        return "+" + Integer.toString(this.Code) + " " + Integer.toString(this.Number);
+        return "+" + Integer.toString(this.Code) + " " + Integer.toString(Number);
     }
 }

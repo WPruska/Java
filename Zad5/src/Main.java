@@ -10,7 +10,6 @@ Wypisz ponownie zawartość mapy.
  */
 
 import Entity.Company;
-import Entity.Entry;
 import Entity.Person;
 import Entity.PhoneNumber;
 
@@ -20,25 +19,40 @@ import java.util.TreeMap;
 public class Main {
     public static void main(String[] args)
     {
-        Person person1 = new Person("Adam","Ludwiczak","Olimpjska",42,538211128);
+        Person person1 = new Person("Adam","Ludwiczak","Olimpjska",41,538211128);
         Person person2 = new Person("Jakub","Ludwiczak","Wyszynskiego",42,123123123);
-        Person person3 = new Person("Jan","Kowalski","Targowa",42,321321321);
+        Person person3 = new Person("Jan","Kowalski","Targowa",43,321321321);
+        Person person4 = new Person("Janusz","Laskowski","Targowa",44,90348902);
         Company company1 = new Company("Politechnika","Radwanska",42,123456789);
-        Company company2 = new Company("ZF Automotive","Pilsudskiego",42,456456456);
+        Company company2 = new Company("ZF Automotive","Felinskiego",42,456456456);
         Company company3 = new Company("Pizzeria Piaski","Wyszyskiego",42,987654321);
+        Company company4 = new Company("Pizzeria 105","Wyszyskiego",42,233123123);
+        //Company 5 ma taki sam klucz jak company4 wiec nie powinien zostać dodany do TreeMap
+        Company company5 = new Company("Pizzeria Nova","Elizejska",42,233123123);
 
-        TreeMap<PhoneNumber, Object> map = new TreeMap<>();
+        TreeMap<PhoneNumber, Person> mapOfPersons = new TreeMap<>();
+        TreeMap<PhoneNumber, Company> mapOfCompanies = new TreeMap<>();
 
-        map.put(person1.GetPhoneNumber(), person1);
-        map.put(person2.GetPhoneNumber(), person2);
-        map.put(person3.GetPhoneNumber(), person3);
-        map.put(company1.GetPhoneNumber(), company1);
-        map.put(company2.GetPhoneNumber(), company2);
-        map.put(company3.GetPhoneNumber(), company3);
+        mapOfPersons.put(person1.GetPhoneNumber(), person1);
+        mapOfPersons.put(person2.GetPhoneNumber(), person2);
+        mapOfPersons.put(person3.GetPhoneNumber(), person3);
+        mapOfPersons.put(person4.GetPhoneNumber(), person4);
+        mapOfCompanies.put(company1.GetPhoneNumber(), company1);
+        mapOfCompanies.put(company2.GetPhoneNumber(), company2);
+        mapOfCompanies.put(company3.GetPhoneNumber(), company3);
+        mapOfCompanies.put(company4.GetPhoneNumber(), company4);
+        mapOfCompanies.put(company5.GetPhoneNumber(), company5);
 
-        for(Map.Entry m: map.entrySet())
+        System.out.println("Persons:");
+        for(Map.Entry<PhoneNumber, Person> m: mapOfPersons.entrySet())
         {
-            
+            m.getValue().PrintDesription();
+        }
+
+        System.out.println("Companies:");
+        for(Map.Entry<PhoneNumber, Company> m: mapOfCompanies.entrySet())
+        {
+            m.getValue().PrintDesription();
         }
     }
 }
