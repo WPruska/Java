@@ -35,4 +35,9 @@ public class Person extends Entry
     {
         return this.PhoneNumber;
     }
+
+    public String GetAdres()
+    {
+        return this.Adres;
+    }
 }

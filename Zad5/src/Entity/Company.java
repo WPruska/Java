@@ -32,4 +32,9 @@ public class Company extends Entry
     {
         return this.PhoneNumber;
     }
+
+    public String GetAdres()
+    {
+        return this.Adres;
+    }
 }

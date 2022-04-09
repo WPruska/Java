@@ -33,15 +33,15 @@ public class Main {
         TreeMap<PhoneNumber, Person> mapOfPersons = new TreeMap<>();
         TreeMap<PhoneNumber, Company> mapOfCompanies = new TreeMap<>();
 
-        mapOfPersons.put(person1.GetPhoneNumber(), person1);
-        mapOfPersons.put(person2.GetPhoneNumber(), person2);
-        mapOfPersons.put(person3.GetPhoneNumber(), person3);
-        mapOfPersons.put(person4.GetPhoneNumber(), person4);
-        mapOfCompanies.put(company1.GetPhoneNumber(), company1);
-        mapOfCompanies.put(company2.GetPhoneNumber(), company2);
-        mapOfCompanies.put(company3.GetPhoneNumber(), company3);
-        mapOfCompanies.put(company4.GetPhoneNumber(), company4);
-        mapOfCompanies.put(company5.GetPhoneNumber(), company5);
+        AddPerson(person1, mapOfPersons);
+        AddPerson(person2, mapOfPersons);
+        AddPerson(person3, mapOfPersons);
+        AddPerson(person4, mapOfPersons);
+        AddCompany(company1, mapOfCompanies);
+        AddCompany(company2, mapOfCompanies);
+        AddCompany(company3, mapOfCompanies);
+        AddCompany(company4, mapOfCompanies);
+        AddCompany(company5, mapOfCompanies);
 
         System.out.println("Persons:");
         for(Map.Entry<PhoneNumber, Person> m: mapOfPersons.entrySet())
@@ -53,6 +53,50 @@ public class Main {
         for(Map.Entry<PhoneNumber, Company> m: mapOfCompanies.entrySet())
         {
             m.getValue().PrintDesription();
+        }
+    }
+
+    public static boolean AdresInPersonMap(Person person, TreeMap<PhoneNumber, Person> personTreeMap)
+    {
+        boolean isInMap = false;
+        for(Map.Entry<PhoneNumber,Person> m: personTreeMap.entrySet())
+        {
+            if(m.getValue().GetAdres() == person.GetAdres())
+            {
+                isInMap = true;
+            }
+        }
+
+        return isInMap;
+    }
+
+    public static boolean AdresInCompaniesMap(Company company, TreeMap<PhoneNumber, Company> companyTreeMap)
+    {
+        boolean isInMap = false;
+        for(Map.Entry<PhoneNumber,Company> m: companyTreeMap.entrySet())
+        {
+            if(m.getValue().GetAdres() == company.GetAdres())
+            {
+                isInMap = true;
+            }
+        }
+
+        return isInMap;
+    }
+
+    public static void AddPerson(Person person, TreeMap<PhoneNumber, Person> personTreeMap)
+    {
+        if(!AdresInPersonMap(person, personTreeMap))
+        {
+            personTreeMap.put(person.GetPhoneNumber(), person);
+        }
+    }
+
+    public static void AddCompany(Company company, TreeMap<PhoneNumber, Company> companyTreeMap)
+    {
+        if(!AdresInCompaniesMap(company, companyTreeMap))
+        {
+            companyTreeMap.put(company.GetPhoneNumber(), company);
         }
     }
 }
