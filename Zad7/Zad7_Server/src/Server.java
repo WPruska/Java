@@ -31,7 +31,7 @@ public class Server {
                 new ClientThread(socket).run();
             }catch(Exception e)
             {
-                System.out.println(e.getMessage());
+//                System.out.println(e.getMessage());
             }
         }
     }

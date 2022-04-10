@@ -1,7 +1,8 @@
-import Entity.Reminder;
+import Entity.Message;
 
 import java.io.*;
 import java.net.Socket;
+import java.time.ZonedDateTime;
 
 public class ClientThread {
     protected Socket socket;
@@ -18,8 +19,10 @@ public class ClientThread {
             {
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
-                Reminder reminder = (Reminder) objectInputStream.readObject();
-                System.out.println(reminder.getMessage());
+                Message message = (Message) objectInputStream.readObject();
+                System.out.println(message.getMessage());
+                long time = ZonedDateTime.now().toInstant().toEpochMilli() - message.getTime().getTime();
+                System.out.println("Time between send and receive message: " + time + " ms");
             }
         }
     }

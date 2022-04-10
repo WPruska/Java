@@ -1,9 +1,8 @@
-import Entity.Reminder;
+import Entity.Message;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
+import java.time.ZonedDateTime;
 
 public class Client {
     private String Host;
@@ -45,11 +44,10 @@ public class Client {
         }
     }
 
-    public void SendReminder(Reminder reminder) throws IOException {
+    public void SendMessageToServer(Message message) throws IOException {
         OutputStream outputStream = socket.getOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
 
-        objectOutputStream.writeObject(reminder);
+        objectOutputStream.writeObject(message);
     }
-
 }
