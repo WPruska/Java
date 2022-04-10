@@ -1,5 +1,9 @@
+import Entity.Reminder;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
-import java.util.logging.SocketHandler;
 
 public class Client {
     private String Host;
@@ -39,6 +43,13 @@ public class Client {
         {
             e.getMessage();
         }
+    }
+
+    public void SendReminder(Reminder reminder) throws IOException {
+        OutputStream outputStream = socket.getOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+        objectOutputStream.writeObject(reminder);
     }
 
 }
